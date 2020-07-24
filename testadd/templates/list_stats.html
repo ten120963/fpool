@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}List Stats{% endblock %}
+
+{% block content %} 
+
+<h1>List Stats</h1>
+
+<br/>
+
+<table>
+   
+  	{% if all_picks %}
+  		
+		{% for records in all_picks %}
+        <tr>
+          <td><b>{{ records.name }}</td>  
+          <td><b>{{ records.points }}</td> 
+        </tr>
+        
+        <tr>
+          <td width="15%">{{ records.afce }}</td>
+          <td width="5%">{{ records.afcescore }}</td>
+          <td width="15%">{{ records.afcn }}</td>
+          <td width="5%">{{ records.afcnscore }}</td>
+          <td width="15%">{{ records.afcs }}</td>
+          <td width="5%">{{ records.afcsscore }}</td>
+          <td width="15%">{{ records.afcw }}</td>
+          <td width="5%">{{ records.afcwscore }}</td>
+        </tr>
+        
+        <tr>
+          <td width="15%">{{ records.nfce }}</td>
+          <td width="5%">{{ records.nfcescore }}</td>
+          <td width="15%">{{ records.nfcn }}</td>
+          <td width="5%">{{ records.nfcnscore }}</td>
+          <td width="15%">{{ records.nfcs }}</td>
+          <td width="5%">{{ records.nfcsscore }}</td>
+          <td width="15%">{{ records.nfcw }}</td>
+          <td width="5%">{{ records.nfcwscore }}</td>
+        </tr>  
+                  
+		{% endfor %}
+
+	{% endif %}
+  
+</table>
+
+{% endblock %}

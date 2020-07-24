@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - Edit Teams{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - Edit Teams</h1>
+<br/>
+
+{% if get_team %}
+
+	<form method="POST">
+		{% csrf_token %}
+
+	  <div class="form-group">
+	    <label>Team:</label>
+	    <input type="text" class="form-control" value="{{ get_team.team }}" name="team">
+	  </div>
+	  <!--
+	  <div class="form-group">
+	    <label>Division:</label>
+	    <input type="text" class="form-control" value="{{ get_team.division }}" name="division">
+	  </div>  
+
+	  <div class="form-group">
+	    <label>Status:</label>
+	    <input type="text" class="form-control" value="{{ get_team.status }}" name="status">
+	  </div>  
+	  -->
+
+	  <div class="form-group">
+	    <label for="division">Division:</label>
+	  <select name="division" id="division">	    
+	    <option value="AFCE">AFCE</option>
+	    <option value="AFCN">AFCN</option>
+	    <option value="AFCS">AFCS</option>
+	    <option value="AFCW">AFCW</option>
+	    <option value="NFCE">NFCE</option>
+	    <option value="NFCN">NFCN</option>
+	    <option value="NFCS">NFCS</option>
+	    <option value="NFCW">NFCW</option>    
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="status">Status:</label>
+	  <select name="status" id="status">	    
+	    <option value="L">Last</option>
+	    <option value="N">None</option>
+	    <option value="P">Playoff</option>    
+	  </select>    
+	  </div>	
+
+	  <br/>
+	  <button type="submit" class="btn btn-secondary">Edit Team</button>
+	</form>
+	
+	<br/>
+	<br/>
+	<form method="POST" action="{% url 'delete_teams' get_team.id %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ get_team.id }}" name="id">
+		<button type="submit" class="btn btn-secondary">Delete Team</button>
+	</form>	
+
+{% endif %}
+
+{% endblock %}

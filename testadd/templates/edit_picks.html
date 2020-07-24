@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - Edit Picks{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - Edit Picks</h1>
+<br/>
+
+{% if get_pick %}
+
+	<form method="POST">
+		{% csrf_token %}
+
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Name:</label>
+	    <input type="text" class="form-control" value="{{ get_pick.name }}" name="name">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address:</label>
+	    <input type="email" class="form-control" value="{{ get_pick.email }}" name="email">
+	  </div>  
+
+	  <br/>
+	  
+	  <div class="form-group">
+	    <label for="afce">AFCE:</label>
+		<select name="afce" value="{{ get_pick.afce }}" id="afce">    
+		  <option value="Buffalo">Buffalo</option>
+		  <option value="Miami">Miami</option>
+		  <option value="New England">New England</option>
+		  <option value="NY Jets">NY Jets</option>
+		</select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="afcn">AFCN:</label>
+		<select name="afcn" value="{{ get_pick.afcn }}" id="afcn">
+	      <option value="Baltimore">Baltimore</option>
+		  <option value="Cincinnati">Cincinnati</option>
+		  <option value="Cleveland">Cleveland</option>
+		  <option value="Pittsburgh">Pittsburgh</option>
+		</select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="afcs">AFCS:</label>
+	  <select name="afcs" value="{{ get_pick.afcs }}" id="afcs">    
+	    <option value="Houston">Houston</option>
+	    <option value="Indianapolis">Indianapolis</option>
+	    <option value="Jacksonville">Jacksonville</option>
+	    <option value="Tennessee">Tennessee</option>
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="afcw">AFCW:</label>
+	  <select name="afcw" value="{{ get_pick.afcw }}" id="afcw">    
+	    <option value="Denver">Denver</option>
+	    <option value="Kansas City">Kansas City</option>
+	    <option value="Las Vegas">Las Vegas</option>
+	    <option value="San Diego">San Diego</option>
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="nfce">NFCE:</label>
+	  <select name="nfce" value="{{ get_pick.nfce }}" id="nfce">    
+	    <option value="Dallas">Dallas</option>
+	    <option value="NY Giants">NY Giants</option>
+	    <option value="Philadelphia">Philadelphia</option>
+	    <option value="Washington">Washington</option>
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="nfcn">NFCN:</label>
+	  <select name="nfcn" value="{{ get_pick.nfcn }}" id="nfcn">    
+	    <option value="Chicago">Chicago</option>
+	    <option value="Detroit">Detroit</option>
+	    <option value="Green Bay">Green Bay</option>
+	    <option value="Minnesota">Minnesota</option>
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="nfcs">NFCS:</label>
+	  <select name="nfcs" value="{{ get_pick.nfcs }}" id="nfcs">    
+	    <option value="Atlanta">Atlanta</option>
+	    <option value="Carolina">Carolina</option>
+	    <option value="New Orleans">New Orleans</option>
+	    <option value="Tampa Bay">Tampa Bay</option>
+	  </select>    
+	  </div>
+
+	  <div class="form-group">
+	    <label for="nfcw">NFCW:</label>
+	  <select name="nfcw" value="{{ get_pick.afce }}" id="nfcw">    
+	    <option value="Arizona">Arizona</option>
+	    <option value="Los Angeles">Los Angeles</option>
+	    <option value="San Francisco">San Francisco</option>
+	    <option value="Seattle">Seattle</option>
+	  </select>    
+	  </div>
+
+	  <br/>
+	  <button type="submit" class="btn btn-secondary">Save Picks</button>
+	</form>
+	<br/>
+	<form method="POST" action="{% url 'delete_picks' get_pick.id %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ get_pick.id }}" name="id">
+		<button type="submit" class="btn btn-secondary">Delete Picks</button>
+	</form>	
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - Edit Games{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - Edit Games</h1>
+<br/>
+
+{% if get_game %}	
+
+	<form method="POST">
+		{% csrf_token %}
+
+	  <table class="table table-striped table-bordered table-hover">
+	    <thead class="thead-dark">
+	      <tr>
+	        <th scope="col">Week</th>
+	        <th scope="col">Away</th>
+	        <th scope="col">Score</th> 
+	        <th scope="col">Home</th> 
+	        <th scope="col">Score</th>      
+	      </tr>
+	    </thead>
+	    <tbody>      
+	      <tr>  
+	        <td>
+	          <div class="form-group">              
+	            <select name="week" id="week">
+	              <option selected disabled hidden style='display: none' value=''></option>
+	              <option value="1">1</option>
+	              <option value="2">2</option>
+	              <option value="3">3</option>
+	              <option value="4">4</option>
+	              <option value="5">5</option>
+	              <option value="6">6</option>
+	              <option value="7">7</option>
+	              <option value="8">8</option>  
+	              <option value="9">9</option>   
+	              <option value="10">10</option>   
+	              <option value="11">11</option>   
+	              <option value="12">12</option>   
+	              <option value="13">13</option>   
+	              <option value="14">14</option>   
+	              <option value="15">15</option>   
+	              <option value="16">16</option>   
+	              <option value="17">17</option>     
+	            </select>    
+	          </div>
+	        </td>       
+	        <td>
+	          <div class="form-group">                
+	            <input type="text" class="form-control" value="{{ get_game.away }}" name="away">
+	          </div>  
+	        </td> 
+	        <td>
+	          <div class="form-group">                
+	            <input type="text" class="form-control" value="{{ get_game.awayscore }}"name="awayscore">
+	          </div>  
+	        </td> 
+	        <td>
+	          <div class="form-group">                
+	            <input type="text" class="form-control" value="{{ get_game.home }}" name="home">
+	          </div>  
+	        </td> 
+	        <td>
+	          <div class="form-group">                
+	            <input type="text" class="form-control" value="{{ get_game.homescore }}" name="homescore">
+	          </div>  
+	        </td>         
+	      </tr>                 
+	    </tbody>
+	  </table>
+
+	  <br/>
+	  <button type="submit" class="btn btn-secondary">Edit Game</button>
+	</form>
+
+	<br/>
+	<br/>
+	<form method="POST" action="{% url 'delete_games' get_game.id %}">
+		{% csrf_token %}
+		<input type="hidden" value="{{ get_game.id }}" name="id">
+		<button type="submit" class="btn btn-secondary">Delete Game</button>
+	</form>	
+
+{% endif %}	
+
+{% endblock %}

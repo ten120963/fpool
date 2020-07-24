@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - Calculate Player Scores{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - Calculate Player Scores</h1>
+
+<br/>
+
+<form method="POST">
+	{% csrf_token %}	
+	<button type="submit" class="btn btn-secondary">Calculate Player Scores</button>
+</form>
+
+<hr/>
+
+{% endblock %}

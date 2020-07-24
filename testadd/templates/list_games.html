@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - List Games{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - List Games</h1>
+
+<br/>
+
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
+<br/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Week</th>
+      <th scope="col">Away</th>
+      <th scope="col">Score</th>
+      <th scope="col">Home</th>
+      <th scope="col">Score</th>      
+      <th scope="col"></th> 
+    </tr>
+  </thead>
+  <tbody>
+  	{% if all_games %}
+  		
+		{% for records in all_games %}
+	  		<tr>				
+				<td>{{ records.week }}</td>
+				<td>{{ records.away }}</td>				
+				<td>{{ records.awayscore }}</td>
+			  <td>{{ records.home }}</td>        
+        <td>{{ records.homescore }}</td>
+        <td><a href="{% url 'edit_games' records.id %}">Edit</a></td>        
+			</tr>	
+		{% endfor %}
+
+	{% endif %}
+
+  </tbody>
+</table>
+
+{% endblock %}

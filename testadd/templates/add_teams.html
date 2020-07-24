@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Football Pool - Add Teams{% endblock %}
+
+{% block content %} 
+
+<h1>Football Pool - Add Teams</h1>
+<br/>
+<form action="{% url 'add_teams' %}" method="POST">
+	{% csrf_token %}
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Team</th>
+        <th scope="col">Division</th>
+        <th scope="col">Status</th>      
+      </tr>
+    </thead>
+    <tbody>      
+      <tr>        
+        <td>
+          <div class="form-group">              
+            <select name="team" id="team">
+              <option selected disabled hidden style='display: none' value=''></option>
+              <option value="Arizona">Arizona</option>
+              <option value="Atlanta">Atlanta</option>
+              <option value="Baltimore">Baltimore</option>
+              <option value="Buffalo">Buffalo</option>
+              <option value="Carolina">Carolina</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Cincinnati">Cincinnati</option>
+              <option value="Cleveland">Cleveland</option>   
+              <option value="Dallas">Dallas</option>  
+              <option value="Denver">Denver</option>  
+              <option value="Detroit">Detroit</option>  
+              <option value="Green Bay">Green Bay</option>  
+              <option value="Houston">Houston</option>  
+              <option value="Indianapolis">Indianapolis</option>  
+              <option value="Jacksonville">Jacksonville</option>  
+              <option value="Kansas City">Kansas City</option>  
+              <option value="Las Vegas">Las Vegas</option>  
+              <option value="LA Chargers">LA Chargers</option>  
+              <option value="LA Rams">LA Rams</option> 
+              <option value="Miami">Miami</option>  
+              <option value="Minnesota">Minnesota</option>  
+              <option value="New England">New England</option>  
+              <option value="New Orleans">New Orleans</option>  
+              <option value="NY Giants">NY Giants</option>  
+              <option value="NY Jets">NY Jets</option>  
+              <option value="Philadelphia">Philadelphia</option>  
+              <option value="Pittsburgh">Pittsburgh</option>                
+              <option value="San Francisco">San Francisco</option>  
+              <option value="Seattle">Seattle</option>  
+              <option value="Tampa Bay">Tampa Bay</option>  
+              <option value="Tennessee">Tennessee</option>  
+              <option value="Washington">Washington</option>   
+            </select>    
+          </div>
+        </td> 
+        <td>
+          <div class="form-group">              
+            <select name="division" id="division">
+              <option selected disabled hidden style='display: none' value=''></option>
+              <option value="AFCE">AFCE</option>
+              <option value="AFCN">AFCN</option>
+              <option value="AFCS">AFCS</option>
+              <option value="AFCW">AFCW</option>
+              <option value="NFCE">NFCE</option>
+              <option value="NFCN">NFCN</option>
+              <option value="NFCS">NFCS</option>
+              <option value="NFCW">NFCW</option>    
+            </select>    
+          </div>
+        </td>       
+        <td>
+          <div class="form-group">              
+            <select name="status" id="status">
+              <option selected disabled hidden style='display: none' value=''></option>
+              <option value="L">Last</option>
+              <option value="N">None</option>
+              <option value="P">Playoff</option>    
+            </select>    
+          </div>  
+        </td>  
+      </tr>                 
+    </tbody>
+  </table>
+
+  <br/>
+  <button type="submit" class="btn btn-secondary">Enter Team</button>
+</form>
+
+{% endblock %}
